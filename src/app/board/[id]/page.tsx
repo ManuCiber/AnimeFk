@@ -76,7 +76,7 @@ export default async function BoardPage({ params }: BoardPageProps) {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <BoardView board={board} isOwner={isOwner} />
+      <BoardView board={board} isOnwer={isOwner} />
     </div>
   )
 }

@@ -1,13 +1,20 @@
-import { SignInButton, UserButton } from "@clerk/nextjs";
+'use client'
+import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import { Button } from "./ui/button";
 import { Home, PlusCircle } from "lucide-react";
 import Link from "next/link";
 import SearchBar from "./SearchBar";
+import { useState } from "react";
 
 export default async function Header() {
-    const user = await currentUser()
-     return (
+
+    const [showCreatedBoard, setShowCreateBoard] = useState(false)
+    const {user, isLoaded} = useUser()
+    
+    if(!isLoaded) return null
+    
+    return (
     <header className="sticky top-0 z-50 bg-background border-b shadow-sm">
       <div className="flex items-center justify-between px-4 py-3 max-w-500 mx-auto">
         {/* Logo */}
